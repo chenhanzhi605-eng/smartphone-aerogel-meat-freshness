@@ -40,5 +40,5 @@ Status: PASS
   "portion_day_recalculation_maximum_difference": 0.0,
   "absolute_path_scan": "PASS",
   "cache_scan": "PASS",
-  "checksums_validated": 1708
+  "checksums_validated": 1707
 }

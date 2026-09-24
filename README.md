@@ -2,7 +2,7 @@
 
 ## Project overview
 
-This repository contains a release candidate for the computational workflow used to analyze standardized 2×2 aerogel colorimetric sensor-array images for beef and pork freshness classification. It includes generic preprocessing, 78-dimensional feature extraction, five model definitions, evaluation code, processed dye-grid images, saved prediction probabilities, and recalculable result tables. The package has not been uploaded to a public repository.
+This repository contains the computational reproducibility package associated with the article “Smartphone-assisted aerogel colorimetric sensor array coupled with lightweight deep learning for multi-meat freshness monitoring.” It includes generic preprocessing, 78-dimensional feature extraction, five model definitions, evaluation code, processed dye-grid images, saved prediction probabilities, and recalculable result tables.
 
 ## Repository structure
 
@@ -87,9 +87,7 @@ Please cite the associated article and repository record after publication:
 
 ## License
 
-Proposed licenses, pending final author approval:
+Licenses:
 
 - Code: MIT License (`LICENSE_CODE.txt`).
 - Processed data: Creative Commons Attribution 4.0 International (`LICENSE_DATA.txt`).
-
-These files document the intended release terms but do not constitute author approval until confirmed by the rights holder(s).
