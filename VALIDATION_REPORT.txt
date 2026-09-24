@@ -1,0 +1,44 @@
+PUBLIC RELEASE VALIDATION
+
+Status: PASS
+
+{
+  "processed_image_counts": {
+    "beef": 840,
+    "pork": 840
+  },
+  "feature_rows": 1680,
+  "feature_dimension": 78,
+  "fixed_prediction_rows": 2100,
+  "cross_validation_prediction_rows": 8400,
+  "feature_smoke_test_maximum_absolute_difference": 2.9323577899198483e-08,
+  "preprocessing_smoke_test": "PASS",
+  "model_definition_smoke_test": "PASS",
+  "model_parameter_counts": {
+    "Spot-CNN": {
+      "parameters": 249987,
+      "input_mode": "image"
+    },
+    "ShuffleNetV2-0.5x": {
+      "parameters": 344867,
+      "input_mode": "image"
+    },
+    "EfficientNet-Lite0": {
+      "parameters": 3374851,
+      "input_mode": "image"
+    },
+    "MobileNetV3-Small": {
+      "parameters": 1520931,
+      "input_mode": "image"
+    },
+    "Tiny-MLP": {
+      "parameters": 12579,
+      "input_mode": "features"
+    }
+  },
+  "image_level_recalculation_maximum_difference": 0.0,
+  "portion_day_recalculation_maximum_difference": 0.0,
+  "absolute_path_scan": "PASS",
+  "cache_scan": "PASS",
+  "checksums_validated": 1708
+}

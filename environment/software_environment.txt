@@ -1,0 +1,15 @@
+Verified training environment
+Python: 3.10.20
+PyTorch: 2.11.0+cu128
+torchvision: 0.26.0+cu128
+timm: 1.0.27
+scikit-learn: 1.7.2
+NumPy: 1.26.4
+pandas: 2.3.3
+Pillow: 12.2.0
+SciPy: 1.15.3
+Matplotlib: 3.10.8
+CUDA runtime: 12.8
+cuDNN raw version: 91900
+GPU used for the recorded training runs: NVIDIA GeForce RTX 5060 Ti
+OpenCV was not required by the released pipeline.

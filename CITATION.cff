@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this code or processed dataset, please cite the associated article and repository record."
+title: "Reproducibility package for aerogel colorimetric sensor-array meat freshness classification"
+type: dataset
+authors:
+  - family-names: Chen
+    given-names: Hanzhi
+year: 2026
+doi: "[Zenodo DOI]"
+identifiers:
+  - type: doi
+    value: "[paper DOI]"
+    description: "Associated article"
+license: CC-BY-4.0
+repository-code: "[GitHub repository URL]"

@@ -1,0 +1,21 @@
+EXCLUDED FILES AND CONTENT
+
+File/path | Reason for exclusion
+code/preprocessing/roi_only_sensor_core.py | Contains dataset-specific file discovery and historical split assignment; replaced by generic preprocessing code.
+code/training/common/roi_only_sensor_core.py | Duplicate historical preprocessing and split implementation.
+code/training/common/roi_only_training_core.py | Contains local project defaults, manifest regeneration, and historical run layout; replaced by generic public modules.
+code/training/beef/* | Dataset-specific historical entry points and preflight behavior.
+code/training/pork/* | Dataset-specific historical entry points and preflight behavior.
+code/training/cross_validation/* | Depends on private allocation manifests and historical grouping/provenance files.
+data/runs/* original directory layout | Replaced by two de-identified consolidated prediction tables.
+results/example_image_level_metrics/fixed_*_all_models_summary.csv | Contains historical group-count fields; metrics were recalculated from released probabilities.
+source repository_file_manifest.csv | Rebuilt for the final candidate.
+source SHA256SUMS.txt | Rebuilt for the final candidate.
+source VALIDATION_REPORT.txt | Rebuilt for the final candidate.
+raw smartphone photographs | Not part of the intended release.
+LabelMe annotation JSON files | Not part of the intended release.
+fixed-split and cross-validation allocation manifests | Explicitly withheld at this stage.
+original specimen-to-role assignment files | Explicitly withheld at this stage.
+model weights | Manual release decision remains pending.
+manuscripts, supplementary files, and reviewer-response working files | Not required for computational reproduction.
+local logs, temporary files, cache, bytecode, and IDE metadata | Local development artifacts.

@@ -1,0 +1,10 @@
+PROPOSED PROCESSED-DATA LICENSE — AUTHOR CONFIRMATION REQUIRED BEFORE PUBLIC RELEASE
+
+Intended license: Creative Commons Attribution 4.0 International (CC BY 4.0)
+Official license text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Subject to final approval by the rights holder(s), users may share and adapt
+the processed data for any purpose provided that appropriate credit is given,
+a link to the license is supplied, and changes are indicated. This notice is a
+release-candidate placeholder and must not be treated as final authorization
+until the authors confirm the licensing terms.

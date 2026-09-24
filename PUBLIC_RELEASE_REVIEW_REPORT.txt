@@ -1,0 +1,182 @@
+PUBLIC RELEASE REVIEW REPORT
+
+Status: READY FOR HUMAN REVIEW
+No upload or cloud transfer was performed.
+
+A. FINAL PUBLIC DIRECTORY TREE
+
+repository root/
+|-- README.md
+|-- LICENSE_CODE.txt
+|-- LICENSE_DATA.txt
+|-- CITATION.cff
+|-- EXCLUDED_FILES.txt
+|-- code/
+|   |-- preprocessing/roi_preprocessing.py
+|   |-- features/extract_features.py
+|   |-- models/model_definitions.py
+|   |-- training/train_models.py
+|   `-- evaluation/ (2 scripts)
+|-- config/model_and_training_config.json
+|-- data/predictions/ (2 consolidated probability tables)
+|-- processed_data/
+|   |-- dye_grids/beef/ (840 PNG files)
+|   |-- dye_grids/pork/ (840 PNG files)
+|   `-- features/ (2 feature tables; 1680 rows total)
+|-- results/
+|   |-- image_level_metrics/ (3 tables)
+|   `-- portion_day_analysis/ (6 tables)
+|-- environment/ (requirements and recorded environment)
+|-- validation/validate_release.py
+|-- repository_file_manifest.csv
+|-- SHA256SUMS.txt
+|-- VALIDATION_REPORT.txt
+`-- PUBLIC_RELEASE_REVIEW_REPORT.txt
+
+Audit-metadata files (the manifest, checksum list, validation report, and this review report) are intentionally excluded from the manifest/checksum scope to avoid self-referential hashes. All scientific, code, configuration, processed-data, prediction, result, environment, and documentation files are covered.
+
+B. INCLUDED FILES SUMMARY
+
+Category | Files
+code | 6
+configs | 1
+processed data | 1682
+predictions | 2
+results | 9
+environment | 2
+documentation | 5
+validation | 1
+
+C. EXPLICITLY EXCLUDED CONTENT
+
+- Raw smartphone photographs.
+- LabelMe annotation JSON files.
+- Fixed-split and cross-validation allocation manifests.
+- Original specimen-to-role assignment files.
+- Historical directory-specific split implementations.
+- Acquisition-directory-specific grouping code.
+- Model weights (manual release decision pending).
+- Local development logs, temporary files, caches, bytecode, and IDE metadata.
+- Manuscripts, supplementary files, reviewer-response working files, and internal audit notes.
+
+D. REPRODUCIBILITY VERIFICATION RESULTS
+
+Processed image count: 1680 (840 beef; 840 pork)
+Byte-identical copied images: 1680
+Feature rows: 1680
+Feature dimension: 78
+Feature maximum absolute difference from staging source: 0.0
+Saved prediction rows: 10500 (2100 fixed test; 8400 four-fold outer test)
+Prediction probability maximum absolute difference from staging source: 0.0
+Source-to-candidate metric maximum absolute difference: 4.440892098500626e-16
+Image-level recalculation difference: 0
+Portion-day recalculation difference: 0
+Preprocessing smoke test: PASS
+Feature-extraction smoke test: PASS
+Five-model definition smoke test: PASS
+Checksum validation: PASS
+Absolute-path scan: PASS
+Cache/bytecode scan: PASS
+
+E. FILES REWRITTEN OR SANITIZED
+
+Original file | Public file | What changed | Scientific content changed?
+old preprocessing core | code/preprocessing/roi_preprocessing.py | Retained generic ROI parsing, spatial ordering, masking, bilinear resizing, and 2x2 construction; removed dataset-specific discovery and split assignment | no
+old training core and entry points | code/models/model_definitions.py; code/training/train_models.py | Retained exact model definitions, augmentation, loss, optimizer, scheduler, weighting, seed, and early stopping; replaced local paths and dataset-specific entry points with a manifest-driven interface | no
+old feature implementation | code/features/extract_features.py | Isolated the exact 78-dimensional extraction function behind a generic CLI | no
+old metric scripts | code/evaluation/recalculate_metrics.py | Switched input to consolidated public prediction tables | no
+old portion-day script | code/evaluation/portion_day_aggregation.py | Retained probability averaging and metrics; removed source-layout and manifest dependencies | no
+processed dye-grid files | processed_data/dye_grids/* | Renamed copies to neutral public identifiers; PNG bytes unchanged | no
+feature tables | processed_data/features/* | Removed source identifiers and local/split fields; retained labels and all 78 feature values | no
+run-layout prediction files | data/predictions/*.csv | Consolidated and de-identified identifiers; retained labels and class probabilities | no
+old configuration | config/model_and_training_config.json | Expanded verified architecture and training fields; no inferred values | no
+old README | README.md | Rewritten to describe only the actual candidate contents and limits | no
+
+F. FILES EXCLUDED AND REASON
+
+File/path | Reason for exclusion
+code/preprocessing/roi_only_sensor_core.py | Contains dataset-specific file discovery and historical split assignment
+code/training/common/roi_only_sensor_core.py | Duplicate historical preprocessing/split implementation
+code/training/common/roi_only_training_core.py | Contains local project defaults, manifest regeneration, and historical run layout; replaced by generic public modules
+code/training/beef/* and code/training/pork/* | Dataset-specific historical entry points and preflight behavior
+code/training/cross_validation/* | Depends on private allocation manifests and historical grouping/provenance files
+data/runs/* original directory layout | Replaced by two de-identified consolidated prediction tables
+results/example_image_level_metrics/fixed_*_all_models_summary.csv | Contains historical group-count fields; metrics were recalculated from released probabilities
+source repository_file_manifest.csv, SHA256SUMS.txt, and VALIDATION_REPORT.txt | Rebuilt for the final candidate
+raw smartphone photographs | Not part of the intended release
+LabelMe JSON | Not part of the intended release
+allocation/specimen-to-role manifests | Explicitly withheld at this stage
+manuscript/supplement/reviewer working files | Not required for computational reproduction
+logs/cache/bytecode/IDE metadata | Local development artifacts
+
+G. README RISK REVIEW
+
+Mentions a beef/pork split-implementation difference: no
+Claims allocation manifests are public: no
+Contains a local absolute path: no
+Promises raw or otherwise unpublished data: no
+Conflicts with the stated release scope: no identified conflict
+Clearly states that the same computational framework was used for beef and pork: yes
+Clearly states that allocation manifests are not included: yes
+
+H. REMAINING MANUAL DECISIONS
+
+- Final GitHub repository name and URL.
+- Whether and when to create a Zenodo record.
+- Whether raw smartphone photographs will be released separately.
+- Whether trained model weights will be included in a later release.
+- Final approval of the proposed MIT and CC BY 4.0 licenses by all rights holders.
+- Final article DOI and repository DOI for CITATION.cff and README.
+
+I. FINAL RECOMMENDATION
+
+READY FOR HUMAN REVIEW
+
+The candidate passed the computational and sanitization checks. It should not be uploaded until the authors confirm the licenses, citation metadata, repository destination, and whether model weights or raw images will be released.
+
+VALIDATION REPORT EXCERPT
+
+PUBLIC RELEASE VALIDATION
+
+Status: PASS
+
+{
+  "processed_image_counts": {
+    "beef": 840,
+    "pork": 840
+  },
+  "feature_rows": 1680,
+  "feature_dimension": 78,
+  "fixed_prediction_rows": 2100,
+  "cross_validation_prediction_rows": 8400,
+  "feature_smoke_test_maximum_absolute_difference": 2.9323577899198483e-08,
+  "preprocessing_smoke_test": "PASS",
+  "model_definition_smoke_test": "PASS",
+  "model_parameter_counts": {
+    "Spot-CNN": {
+      "parameters": 249987,
+      "input_mode": "image"
+    },
+    "ShuffleNetV2-0.5x": {
+      "parameters": 344867,
+      "input_mode": "image"
+    },
+    "EfficientNet-Lite0": {
+      "parameters": 3374851,
+      "input_mode": "image"
+    },
+    "MobileNetV3-Small": {
+      "parameters": 1520931,
+      "input_mode": "image"
+    },
+    "Tiny-MLP": {
+      "parameters": 12579,
+      "input_mode": "features"
+    }
+  },
+  "image_level_recalculation_maximum_difference": 0.0,
+  "portion_day_recalculation_maximum_difference": 0.0,
+  "absolute_path_scan": "PASS",
+  "cache_scan": "PASS",
+  "checksums_validated": 1708
+}

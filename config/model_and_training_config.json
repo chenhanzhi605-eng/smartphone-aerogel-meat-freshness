@@ -1,0 +1,79 @@
+{
+  "classes": ["Fresh", "Sub-fresh", "Spoiled"],
+  "label_mapping": {
+    "Fresh": 0,
+    "Sub-fresh": 1,
+    "Spoiled": 2,
+    "historical_token_note": "The internal token Borderline corresponds to the manuscript label Sub-fresh."
+  },
+  "roi_order": ["MR", "BTB", "BCP", "BCG"],
+  "roi_patch_size_pixels": [64, 64],
+  "dye_grid_size_pixels": [128, 128],
+  "roi_crop_scale": 1.06,
+  "roi_interpolation": "bilinear",
+  "non_roi_fill_rgb": [255, 255, 255],
+  "feature_vector": {
+    "dimension": 78,
+    "per_roi": "RGB, HSV, and Lab mean and standard deviation (18 values per ROI; 72 total)",
+    "additional": "Six pairwise Euclidean distances between ROI Lab means"
+  },
+  "models": {
+    "Spot-CNN": {
+      "input": "128 x 128 RGB dye-grid",
+      "convolution_channels": [32, 64, 128, 128],
+      "kernel_size": 3,
+      "batch_normalization_after_each_convolution": true,
+      "activation": "ReLU",
+      "max_pool_after_blocks": [1, 2, 3],
+      "classifier": "adaptive average pooling -> dropout 0.35 -> 128-to-64 linear -> ReLU -> dropout 0.20 -> 3 outputs"
+    },
+    "ShuffleNetV2-0.5x": {
+      "implementation": "torchvision.models.shufflenet_v2_x0_5",
+      "input": "128 x 128 RGB dye-grid",
+      "pretrained_weights": false,
+      "output_classes": 3
+    },
+    "EfficientNet-Lite0": {
+      "implementation": "timm efficientnet_lite0",
+      "input": "128 x 128 RGB dye-grid",
+      "pretrained_weights": false,
+      "output_classes": 3
+    },
+    "MobileNetV3-Small": {
+      "implementation": "timm mobilenetv3_small_100",
+      "input": "128 x 128 RGB dye-grid",
+      "pretrained_weights": false,
+      "output_classes": 3
+    },
+    "Tiny-MLP": {
+      "input": "78-dimensional feature vector",
+      "architecture": [78, 96, 48, 3],
+      "batch_normalization": "after the first hidden layer",
+      "activation": "ReLU",
+      "dropout": [0.20, 0.10]
+    }
+  },
+  "training": {
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.001,
+    "label_smoothing": 0.03,
+    "batch_size": 32,
+    "maximum_epochs": 45,
+    "early_stopping_patience": 9,
+    "scheduler": {"name": "CosineAnnealingLR", "T_max": 45},
+    "class_weighting": "inverse frequency",
+    "seed": 42,
+    "validation_metric": "macro-F1",
+    "deterministic_algorithms": true,
+    "gradient_clipping_max_norm": 1.0,
+    "image_augmentation": {
+      "color_jitter_brightness": 0.025,
+      "color_jitter_contrast": 0.025,
+      "color_jitter_saturation": 0.015
+    },
+    "image_normalization_mean": [0.485, 0.456, 0.406],
+    "image_normalization_std": [0.229, 0.224, 0.225]
+  },
+  "allocation_manifests_included": false
+}
