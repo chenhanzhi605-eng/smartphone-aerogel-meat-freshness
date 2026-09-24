@@ -5,11 +5,5 @@ type: dataset
 authors:
   - family-names: Chen
     given-names: Hanzhi
-year: 2026
-doi: "[Zenodo DOI]"
-identifiers:
-  - type: doi
-    value: "[paper DOI]"
-    description: "Associated article"
-license: CC-BY-4.0
-repository-code: "[GitHub repository URL]"
+version: "1.0.0"
+repository-code: "https://github.com/chenhanzhi605-eng/smartphone-aerogel-meat-freshness"
