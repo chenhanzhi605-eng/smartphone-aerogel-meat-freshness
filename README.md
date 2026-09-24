@@ -80,10 +80,9 @@ The package supports verification of processed-image counts, feature values, sav
 
 ## Citation
 
-Please cite the associated article and repository record after publication:
+Please cite the associated article after publication:
 
-- Article DOI: `[paper DOI]`
-- Repository DOI: `[Zenodo DOI]`
+- Article DOI: forthcoming
 
 ## License
 
